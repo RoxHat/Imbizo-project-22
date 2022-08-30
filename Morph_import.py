@@ -9,7 +9,8 @@ h.load_file("stdgui.hoc")
 
 #print([x for x in dir(h) if x._contains_('Import')])
 
-# SWC filename
+
+# ASC filename
 filename = "200929_mbv3_cell1.ASC"
 cell = h.Import3d_Neurolucida3()
 #cell = h.Import3d_MorphML()
@@ -22,7 +23,13 @@ cell.input(filename)
 i3d = h.Import3d_GUI(cell, 0)
 i3d.instantiate(None)
 
+for sec in h.allsec():
+    print(sec)
+
 # Make a figure, just for you to see that it works.
-ps = h.PlotShape(True)  # False tells h.PlotShape not to use NEURON's gui
+ps = h.PlotShape(False)  # False tells h.PlotShape not to use NEURON's gui
 ps.plot(plt)
 plt.show()
+
+soma = h.soma[0]
+print(soma.L)
