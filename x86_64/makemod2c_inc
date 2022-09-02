@@ -1,0 +1,24 @@
+./kv.c: ../mechanisms//kv.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "../mechanisms";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "kv.mod" -o "/home/roxanne/dev/Imbizo-project-22/x86_64")
+
+./kv.o: ./kv.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I"../mechanisms" $(INCLUDES) -fPIC -c $< -o $@
+
+./na.c: ../mechanisms//na.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "../mechanisms";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "na.mod" -o "/home/roxanne/dev/Imbizo-project-22/x86_64")
+
+./na.o: ./na.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I"../mechanisms" $(INCLUDES) -fPIC -c $< -o $@
+
+./NMDA.c: ../mechanisms//NMDA.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "../mechanisms";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "NMDA.mod" -o "/home/roxanne/dev/Imbizo-project-22/x86_64")
+
+./NMDA.o: ./NMDA.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I"../mechanisms" $(INCLUDES) -fPIC -c $< -o $@
+

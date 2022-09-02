@@ -1,5 +1,7 @@
-from neuron import h
+from neuron import h,gui
+
 import matplotlib.pyplot as plt
+import numpy as np
 
 # helper libraries, included with NEURON
 h.load_file("stdlib.hoc")
@@ -11,25 +13,20 @@ h.load_file("stdgui.hoc")
 
 
 # ASC filename
-filename = "200929_mbv3_cell1.ASC"
+#filename = "200929_mbv3_cell1.ASC"
+filename="20180522_MBV02_cell01.ASC"
 cell = h.Import3d_Neurolucida3()
-#cell = h.Import3d_MorphML()
 # other options check dir(h)
 cell.input(filename)
 
 # easiest to instantiate by passing the loaded morphology to the Import3d_GUI
 # tool; with a second argument of 0, it won't display the GUI, but it will allow
 # use of the GUI's features
-i3d = h.Import3d_GUI(cell, 0)
+i3d = h.Import3d_GUI(cell)
 i3d.instantiate(None)
 
-for sec in h.allsec():
-    print(sec)
-
 # Make a figure, just for you to see that it works.
-ps = h.PlotShape(False)  # False tells h.PlotShape not to use NEURON's gui
+ps = h.PlotShape(True)  # False tells h.PlotShape not to use NEURON's gui
 ps.plot(plt)
 plt.show()
 
-soma = h.soma[0]
-print(soma.L)
