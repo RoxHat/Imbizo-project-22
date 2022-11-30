@@ -240,7 +240,7 @@ tstop = 1500  # ms
 
 # Add a stimulus at the start of dend1 Section
 stim = h.IClamp(h.soma[0](0.5))
-stim.delay = 20
+stim.delay = 50
 stim.dur = 1000
 stim.amp = 0.2
 
@@ -264,8 +264,22 @@ results_active ['time'] = np.array(t_vec)
 with open('results_active_F_1_9.pickle', 'wb') as file:
     pickle.dump(results_active , file, protocol=pickle.HIGHEST_PROTOCOL)
 
-fig3, (ax3, ax4) = plt.subplots(nrows=1, ncols=2, sharey=True)
-ax3.plot(results_active['time'], results_active['vsoma'], label="soma")
-ax4.plot(results_active['time'], results_active['vaxon'], label="axon")
+plt.figure(figsize=(8, 6))
+
+plt.plot(results_active['time'], results_active['vsoma'],color='k', label='soma')
+#plt.plot(results_passive['time'], results_passive['vapic29'], color='r', label='apical')
+
+plt.xlabel('time (ms)')
+plt.ylabel('mV')
+#plt.ylim(-87,-78)
+plt.title('F = 1.9')
+plt.legend()
+plt.savefig("F_19_act_.png")
+plt.show()
+'''
+fig3, (ax3, ax4) = plt.subplots(nrows=1, ncols=1)
+ax3.plot(results_active['time'], results_active['vsoma'], label="F = 1.9")
+#ax4.plot(results_active['time'], results_active['vaxon'], label="axon")
 ax3.legend()
-ax4.legend()
+a#x4.legend()
+'''
