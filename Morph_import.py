@@ -30,3 +30,8 @@ ps = h.PlotShape(True)  # False tells h.PlotShape not to use NEURON's gui
 ps.plot(plt)
 plt.show()
 
+#tools.dist mechanisms.viewers. shape names to see sections
+#check out trees tool box
+
+#try apic 2 and apic 29
+#test
